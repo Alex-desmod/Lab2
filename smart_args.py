@@ -71,6 +71,7 @@ def smart_args(func):
             if isinstance(param.default, Evaluated) and value == param.default:
                 kwargs[name] = param.default.evaluate()
 
+            # making a deep copy of an argument for the defaults with 'isolated' type
             elif isinstance(param.default, Isolated):
                 kwargs[name] = copy.deepcopy(value)
 
